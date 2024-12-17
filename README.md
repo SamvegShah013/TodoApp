@@ -32,7 +32,7 @@ A simple and responsive task management application built with React.js for the 
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   npm install express cors mysql2
    ```
 3. Configure environment variables:
    - Update `DATABASE_URL`, `PORT`, and other configurations in `.env` file.
@@ -58,23 +58,13 @@ A simple and responsive task management application built with React.js for the 
 
 4. Start the frontend application:
    ```bash
-   npm start
+   npm run dev
    ```
 
 ---
 
 ## 📸 Screenshots
 - Coming Soon!
-
----
-
-## 💬 Feedback & Contributions
-Feel free to raise issues, suggest features, or contribute with a pull request. Let's build something great together! 🚀
-
----
-
-## 🏆 License
-This project is licensed under the MIT License.
 
 ---
 
