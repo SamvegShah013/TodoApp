@@ -3,15 +3,20 @@ const cors = require('cors')
 const app = express();
 const mysql = require('mysql2')
 
-app.use(express.json())
-app.use(cors()) //cross-origin resouce 
+const app = express();
+const PORT = process.env.PORT || 5001;
 
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// Database Connection
 const db = mysql.createConnection({
-    host : 'database-1.ctiew2c2oy8q.ap-south-1.rds.amazonaws.com',
-    user : 'admin',
-    password : "samveg1234",
-    database : 'todo_app'
-})
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
 db.connect((err) => {
     if(!err){
