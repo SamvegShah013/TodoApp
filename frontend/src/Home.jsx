@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-    const BASE_URL = "http://localhost:5000";  // API Base URL
+    const BASE_URL = "http://13.232.47.222:5002";  // API Base URL
 
     // State Variables
     const [tab, setTab] = useState(1);
