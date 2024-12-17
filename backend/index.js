@@ -7,10 +7,10 @@ app.use(express.json())
 app.use(cors()) //cross-origin resouce 
 
 const db = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : "admin",
-    database : 'sys'
+    host : 'database-1.ctiew2c2oy8q.ap-south-1.rds.amazonaws.com',
+    user : 'admin',
+    password : "samveg1234",
+    database : 'todo_app'
 })
 
 db.connect((err) => {
@@ -115,5 +115,5 @@ app.post('/complete-task', (req, res) => {
     })
 })
 
-app.listen(5000, () => {console.log('server started');
+app.listen(5002, () => {console.log('server started');
 })
