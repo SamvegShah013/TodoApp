@@ -6,9 +6,12 @@ const mysql = require('mysql2')
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "http://<Frontend_LB_DNS>",  // Use your frontend LB DNS
+  methods: ["GET", "POST", "PUT", "DELETE"]
+}));
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 80;  // Listen on LB port
 // Database Connection
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -27,6 +30,11 @@ db.connect((err) => {
         
     }
 })
+
+// Health Check Route
+app.get("/health", (req, res) => {
+  res.status(200).send("Backend is healthy");
+});
 
 app.post('/new-task', (req, res) => {
     console.log(req.body);
@@ -120,5 +128,6 @@ app.post('/complete-task', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {console.log('server started');
-})
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Backend running on port ${PORT}`);
+});
