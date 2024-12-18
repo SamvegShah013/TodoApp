@@ -1,20 +1,24 @@
+require('dotenv').config();
 const express = require('express')
 const cors = require('cors')
 const app = express();
 const mysql = require('mysql2')
 
-const PORT = process.env.PORT || 5001;
+
+const PORT = process.env.PORT;
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
+const PORT = process.env.PORT
 // Database Connection
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  port: process.env.DB_PORT
 });
 
 db.connect((err) => {
@@ -119,5 +123,5 @@ app.post('/complete-task', (req, res) => {
     })
 })
 
-app.listen(5002, () => {console.log('server started');
+app.listen(PORT, () => {console.log('server started');
 })
